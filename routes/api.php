@@ -31,3 +31,7 @@ Route::post('wx/login', 'API\UserController@WxLogin');
 Route::group(['middleware' => 'auth:xcx'], function(){
     Route::post('wx/details', 'API\UserController@WxDetails');
 });
+
+Route::get('api/dingtalk', function (Request $request){
+    dd($request->query);
+});
