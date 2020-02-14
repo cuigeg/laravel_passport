@@ -428,7 +428,6 @@ class DingTalkClient
             $result->msg = $e->getMessage();
             return $result;
         }
-
         unset($apiParams);
         unset($fileFields);
         //解析TOP返回结果
@@ -564,7 +563,6 @@ class DingTalkClient
 			$result->msg = $e->getMessage();
 			return $result;
 		}
-
 		unset($apiParams);
 		unset($fileFields);
 		//解析TOP返回结果

@@ -6,17 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Dingtalk extends Model
 {
-    public function __construct(array $attributes = [])
-    {
-        parent::__construct($attributes);
-    }
-
     public static function getAccessToken()
     {
         if (cache('access_token')) {
             return cache('access_token');
         }
-        $client = new \DingTalkClient(\DingTalkConstant::$CALL_TYPE_OAPI, \DingTalkConstant::$METHOD_GET, \DingTalkConstant::$FORMAT_JSON);
+
+        $client = new \DingTalkClient(\DingTalkConstant::$CALL_TYPE_TOP, \DingTalkConstant::$METHOD_GET, \DingTalkConstant::$FORMAT_JSON);
         $request = new \OapiGettokenRequest();
         $request->setAppkey(env('DINGTALK_APPKEY'));
         $request->setAppsecret(env('DINGTALK_APPSECRET'));
@@ -39,8 +35,7 @@ class Dingtalk extends Model
         $client = new \DingTalkClient(\DingTalkConstant::$CALL_TYPE_OAPI,\DingTalkConstant::$METHOD_GET,\DingTalkConstant::$FORMAT_JSON);
         $request = new \OapiUserGetuserinfoRequest();
         $request->setCode($code);
-        $request->putOtherTextParam('access_token', $access_token);
-        $res = $client->execute($request);
+        $res = $client->execute($request,$access_token);
         file_put_contents('dingtalk.txt', 'getUserId 返回值：' . PHP_EOL, FILE_APPEND);
         file_put_contents('dingtalk.txt', json_encode($res) . PHP_EOL, FILE_APPEND);
         if ($res->errcode == 0) {
