@@ -1,14 +1,14 @@
 <?php
 
 /**
- * 订单信息
+ * 订单信息列表
  * @author auto create
  */
-class InAppGoodsOrderVo
+class InAppGoodsOrderVO
 {
 	
 	/** 
-	 * 内购商品订单号
+	 * 订单号
 	 **/
 	public $biz_order_id;
 	
@@ -18,17 +18,12 @@ class InAppGoodsOrderVo
 	public $corp_id;
 	
 	/** 
-	 * 订单创建时间
+	 * 订单创建时间戳
 	 **/
 	public $create_timestamp;
 	
 	/** 
-	 * 订购的服务结束时间
-	 **/
-	public $end_timestamp;
-	
-	/** 
-	 * 内购商品码
+	 * 商品码
 	 **/
 	public $goods_code;
 	
@@ -38,27 +33,22 @@ class InAppGoodsOrderVo
 	public $item_code;
 	
 	/** 
-	 * 订单支付时间
+	 * 订单支付时间戳
 	 **/
 	public $paid_timestamp;
 	
 	/** 
-	 * 订购数量，周期型商品此字段为空
+	 * 订购数量，周期型商品该字段为空
 	 **/
 	public $quantity;
 	
 	/** 
-	 * 订购的服务开始时间
-	 **/
-	public $start_timestamp;
-	
-	/** 
-	 * 订单状态，0 - 订单关闭，3 - 订单支付，4 - 订单创建
+	 * 订单状态，3 - 已支付状态
 	 **/
 	public $status;
 	
 	/** 
-	 * 实际支付总金额，单位为分(RMB)
+	 * 实际支付总金额，CNY(分)
 	 **/
 	public $total_actual_pay_fee;	
 }

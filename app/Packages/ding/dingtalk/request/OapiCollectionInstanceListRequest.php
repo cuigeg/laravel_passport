@@ -3,7 +3,7 @@
  * dingtalk API: dingtalk.oapi.collection.instance.list request
  * 
  * @author auto create
- * @since 1.0, 2020.02.05
+ * @since 1.0, 2020.02.10
  */
 class OapiCollectionInstanceListRequest
 {

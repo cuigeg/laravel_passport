@@ -1,20 +1,30 @@
 <?php
 
 /**
- * 未登陆用户数据
+ * 页数据结果
  * @author auto create
  */
-class PageVo
+class PageVO
 {
 	
 	/** 
-	 * 是否有更多数据
+	 * 是否有更多记录
 	 **/
 	public $has_more;
 	
 	/** 
-	 * 用户列表
+	 * 投屏数据列表
 	 **/
-	public $list;	
+	public $list;
+	
+	/** 
+	 * 下一个游标
+	 **/
+	public $next_cursor;
+	
+	/** 
+	 * 下一游标
+	 **/
+	public $next_cursor_string;	
 }
 ?>

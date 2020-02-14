@@ -1,10 +1,10 @@
 <?php
 
 /**
- * 附件
+ * 附件内容
  * @author auto create
  */
-class AttachmentVo
+class AttachmentVO
 {
 	
 	/** 

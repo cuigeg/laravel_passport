@@ -17,6 +17,7 @@ class Dingtalk extends Model
         $request->setAppkey(env('DINGTALK_APPKEY'));
         $request->setAppsecret(env('DINGTALK_APPSECRET'));
         $res = $client->execute($request);
+        dd($res);
         file_put_contents('dingtalk.txt', 'get access token 返回值：' . PHP_EOL, FILE_APPEND);
         file_put_contents('dingtalk.txt', json_encode($res) . PHP_EOL, FILE_APPEND);
         if ($res->errcode == 0) {

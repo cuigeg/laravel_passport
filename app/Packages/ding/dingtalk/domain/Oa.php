@@ -1,10 +1,10 @@
 <?php
 
 /**
- * oa消息
+ * OA消息
  * @author auto create
  */
-class Oa
+class OA
 {
 	
 	/** 

@@ -1,14 +1,14 @@
 <?php
 
 /**
- * 系统自动生成
+ * result
  * @author auto create
  */
-class IsvOrgShortcutStatusDto
+class IsvOrgShortcutStatusDTO
 {
 	
 	/** 
-	 * 唯一流水号-系统交互唯一识别码
+	 * 系统交互唯一流水号(ISV维度下不可重复)
 	 **/
 	public $biz_no;	
 }
