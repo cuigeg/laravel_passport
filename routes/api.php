@@ -35,3 +35,6 @@ Route::group(['middleware' => 'auth:xcx'], function(){
 Route::get('api/dingtalk', function (Request $request){
     dd($request->query);
 });
+Route::get('logs/add', function (Request $request){
+    file_put_contents('dingtalk.txt', json_encode($request->all()) . PHP_EOL, FILE_APPEND);
+});

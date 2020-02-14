@@ -81,14 +81,25 @@
     window.onload = function () {
         console.log(11111)
         console.log(window.href)
-        window.location.href = '/api/';
+        $.ajax({
+            type: "get",
+            url: "/api/logs/add?type=直接获取免登授权码&data=" + window.location.search,
+            success(res) {
+                alert('请求成功！')
+            }
+        })
         dd.ready(function() {
             dd.runtime.permission.requestAuthCode({
                 corpId: _config.corpId, // 企业id
                 onSuccess: function (info) {
                     code = info.code // 通过该免登授权码可以获取用户身份
-                    console.log('数据')
-                    console.log(code)
+                    $.ajax({
+                        type: "get",
+                        url: "/api/logs/add?type=钉钉jsapi获取免登授权码&code=" + code,
+                        success(res) {
+                            alert('请求成功！')
+                        }
+                    })
                 }});
         });
     }
