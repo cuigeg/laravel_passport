@@ -90,7 +90,7 @@
         })
         dd.ready(function() {
             dd.runtime.permission.requestAuthCode({
-                corpId: _config.corpId, // 企业id
+                corpId: 'ding79ba5070e9b925aa24f2f5cc6abecb85', // 企业id
                 onSuccess: function (info) {
                     code = info.code // 通过该免登授权码可以获取用户身份
                     $.ajax({
