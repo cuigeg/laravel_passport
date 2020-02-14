@@ -37,5 +37,6 @@ Route::get('api/dingtalk', function (Request $request){
 });
 Route::get('logs/add', function (Request $request){
     file_put_contents('dingtalk.txt', json_encode($request->all()) . PHP_EOL, FILE_APPEND);
-    \App\Packages\Dingtalk::getAccessToken($request->input('code'));
+    $res = \App\Packages\Dingtalk::getUserId($request->input('code'));
+    dd($res);
 });

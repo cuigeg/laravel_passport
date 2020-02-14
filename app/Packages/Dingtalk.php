@@ -11,7 +11,7 @@ class Dingtalk extends Model
         parent::__construct($attributes);
     }
 
-    public static function getAccessToken($code)
+    public static function getAccessToken()
     {
         if (cache('access_token')) {
             return cache('access_token');
@@ -28,6 +28,23 @@ class Dingtalk extends Model
             file_put_contents('dingtalk.txt', 'getAccessToken返回值：' . PHP_EOL, FILE_APPEND);
             file_put_contents('dingtalk.txt', $res->access_token . PHP_EOL, FILE_APPEND);
             return $res->access_token;
+        } else {
+            return false;
+        }
+    }
+
+    public static function getUserId($code)
+    {
+        $access_token = self::getAccessToken();
+        $client = new \DingTalkClient(\DingTalkConstant::$CALL_TYPE_OAPI,\DingTalkConstant::$METHOD_GET,\DingTalkConstant::$FORMAT_JSON);
+        $request = new \OapiUserGetuserinfoRequest();
+        $request->setCode($code);
+        $request->putOtherTextParam('access_token', $access_token);
+        $res = $client->execute($request);
+        file_put_contents('dingtalk.txt', 'getUserId 返回值：' . PHP_EOL, FILE_APPEND);
+        file_put_contents('dingtalk.txt', json_encode($res) . PHP_EOL, FILE_APPEND);
+        if ($res->errcode == 0) {
+            return $res;
         } else {
             return false;
         }
