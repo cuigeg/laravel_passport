@@ -46,16 +46,15 @@ class Dingtalk extends Model
     {
         $access_token = self::getAccessToken();
         file_put_contents('dingtalk.txt', 'getUserId 参数：' . PHP_EOL, FILE_APPEND);
-        file_put_contents('dingtalk.txt', 'code:' .$code . 'access_token:'.$access_token . PHP_EOL, FILE_APPEND);
-        $http = new Client();
-        $response = $http->get('https://oapi.dingtalk.com/user/getuserinfo?access_token='. $access_token .'&code=code' .$code);
-        $res = json_decode((string)$response->getBody());
-        dd($res);
-
-//        $client = new \DingTalkClient(\DingTalkConstant::$CALL_TYPE_TOP,\DingTalkConstant::$METHOD_GET,\DingTalkConstant::$FORMAT_JSON);
-//        $request = new \OapiUserGetuserinfoRequest();
-//        $request->setCode($code);
-//        $res = $client->execute($request,$access_token);
+        file_put_contents('dingtalk.txt', 'code:' .$code . '---------access_token:'.$access_token . PHP_EOL, FILE_APPEND);
+//        dd(1);
+//        $http = new Client();
+//        $response = $http->get('https://oapi.dingtalk.com/user/getuserinfo?access_token='. $access_token .'&code=code' .$code);
+//        $res = json_decode((string)$response->getBody());
+        $client = new \DingTalkClient(\DingTalkConstant::$CALL_TYPE_OAPI,\DingTalkConstant::$METHOD_GET,\DingTalkConstant::$FORMAT_JSON);
+        $request = new \OapiUserGetuserinfoRequest();
+        $request->setCode($code);
+        $res = $client->execute($request,$access_token);
 //        dd($res);
         file_put_contents('dingtalk.txt', 'getUserId 返回值：' . PHP_EOL, FILE_APPEND);
         file_put_contents('dingtalk.txt', json_encode($res) . PHP_EOL, FILE_APPEND);
