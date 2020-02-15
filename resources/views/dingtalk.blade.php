@@ -79,15 +79,13 @@
     </body>
 <script>
     window.onload = function () {
-        console.log(11111)
-        console.log(window.href)
-        $.ajax({
-            type: "get",
-            url: "/api/logs/add?type=直接获取免登授权码&data=" + window.location.search,
-            success(res) {
-                alert('请求成功！')
-            }
-        })
+        // $.ajax({
+        //     type: "get",
+        //     url: "/api/logs/add?type=直接获取免登授权码&data=" + window.location.search,
+        //     success(res) {
+        //         alert('请求成功！')
+        //     }
+        // })
         dd.ready(function() {
             dd.runtime.permission.requestAuthCode({
                 corpId: 'ding79ba5070e9b925aa24f2f5cc6abecb85', // 企业id
