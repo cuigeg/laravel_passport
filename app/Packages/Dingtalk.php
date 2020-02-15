@@ -45,10 +45,12 @@ class Dingtalk extends Model
     public static function getUserId($code)
     {
         $access_token = self::getAccessToken();
+        file_put_contents('dingtalk.txt', 'getUserId 参数：' . PHP_EOL, FILE_APPEND);
+        file_put_contents('dingtalk.txt', 'code:' .$code . 'access_token:'.$access_token . PHP_EOL, FILE_APPEND);
         $http = new Client();
         $response = $http->get('https://oapi.dingtalk.com/user/getuserinfo?access_token='. $access_token .'&code=code' .$code);
         $res = json_decode((string)$response->getBody());
-//        dd($res);
+        dd($res);
 
 //        $client = new \DingTalkClient(\DingTalkConstant::$CALL_TYPE_TOP,\DingTalkConstant::$METHOD_GET,\DingTalkConstant::$FORMAT_JSON);
 //        $request = new \OapiUserGetuserinfoRequest();
