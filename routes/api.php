@@ -20,7 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('login', 'API\UserController@login');
 Route::post('register', 'API\UserController@register');
 
-Route::group(['middleware' => 'auth:api'], function(){
+Route::group(['middleware' => 'auth:api'], function () {
     Route::post('details', 'API\UserController@details');
 });
 
@@ -28,15 +28,17 @@ Route::group(['middleware' => 'auth:api'], function(){
 Route::post('wx/register', 'API\UserController@WxRegister');
 Route::post('wx/login', 'API\UserController@WxLogin');
 
-Route::group(['middleware' => 'auth:xcx'], function(){
+Route::group(['middleware' => 'auth:xcx'], function () {
     Route::post('wx/details', 'API\UserController@WxDetails');
 });
 
-Route::get('api/dingtalk', function (Request $request){
+Route::get('api/dingtalk', function (Request $request) {
     dd($request->query);
 });
-Route::get('logs/add', function (Request $request){
+Route::get('logs/add', function (Request $request) {
     file_put_contents('dingtalk.txt', json_encode($request->all()) . PHP_EOL, FILE_APPEND);
-    $res = \App\Packages\Dingtalk::getUserId($request->input('code'));
-    dd($res);
+    if ($request->input('code')) {
+        $res = \App\Packages\Dingtalk::getUserId($request->input('code'));
+        dd($res);
+    }
 });
