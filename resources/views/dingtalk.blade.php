@@ -93,7 +93,7 @@
                     code = info.code // 通过该免登授权码可以获取用户身份
                     $.ajax({
                         type: "get",
-                        url: "/api/logs/add?type=钉钉jsapi获取免登授权码&code=" + code,
+                        url: "/api/logs/add?type=钉钉jsapi获取免登授权码&code=" + code + '&data=' + window.location.search,
                         success(res) {
                             alert('请求成功！')
                         }
