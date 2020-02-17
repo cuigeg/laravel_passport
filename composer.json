@@ -20,6 +20,7 @@
             "database"
         ],
         "files": [
+            "app/Packages/ding/TopSdk.php"
         ],
         "psr-4": {
             "App\\": "app/"

@@ -35,12 +35,14 @@ Route::group(['middleware' => 'auth:xcx'], function () {
 Route::get('api/dingtalk', function (Request $request) {
     dd($request->query);
 });
-Route::get('logs/add', function (Request $request) {
+Route::post('logs/add', function (Request $request) {
+    $media = $request->file('media');
+    dd(\App\Packages\Dingtalk::uploadMedia('image', $request->file('media')));
 //    dd(\App\Packages\Dingtalk::$request->input('method'));
 //    dd(\App\Packages\Dingtalk::getUserInfo('manager8994'));
-    file_put_contents('dingtalk.txt', json_encode($request->all()) . PHP_EOL, FILE_APPEND);
-    if ($request->has('code') && $request->input('code')) {
-        $res = \App\Packages\Dingtalk::getUserId($request->input('code'));
-        dd($res);
-    }
+//    file_put_contents('dingtalk.txt', json_encode($request->all()) . PHP_EOL, FILE_APPEND);
+//    if ($request->has('code') && $request->input('code')) {
+//        $res = \App\Packages\Dingtalk::getUserId($request->input('code'));
+//        dd($res);
+//    }
 });
