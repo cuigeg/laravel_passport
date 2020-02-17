@@ -36,7 +36,7 @@ Route::get('api/dingtalk', function (Request $request) {
     dd($request->query);
 });
 Route::get('logs/add', function (Request $request) {
-//    dd(\App\Packages\Dingtalk::sendMessage());
+//    dd(\App\Packages\Dingtalk::$request->input('method'));
 //    dd(\App\Packages\Dingtalk::getUserInfo('manager8994'));
     file_put_contents('dingtalk.txt', json_encode($request->all()) . PHP_EOL, FILE_APPEND);
     if ($request->has('code') && $request->input('code')) {
